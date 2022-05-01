@@ -68,7 +68,18 @@ const getNeighborsOf = ([x, y]) => {
   return [[x - 1, y - 1], [x + 1, y + 1], [x, y + 1], [x + 1, y], [x - 1, y], [x, y - 1], [x - 1, y + 1], [x + 1, y - 1]];
 };
 
-const getLivingNeighbors = (cell, state) => { };
+const getLivingNeighbors = (cell, state) => {
+  const neighborsOfCell = getNeighborsOf(cell);
+  let livingNeighbors = [];
+  let constainsFunc = contains.bind(state);
+
+  neighborsOfCell.forEach(element => {
+    if (constainsFunc(element)) {
+      livingNeighbors.push(element);
+    }
+  });
+  return livingNeighbors;
+};
 
 const willBeAlive = (cell, state) => { };
 
