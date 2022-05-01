@@ -30,8 +30,8 @@ const corners = (state = []) => {
     };
   }
 
-  let minX = 0, maxX = 0, minY = 0, maxY = 0;
-
+  let minX = state[0][0], maxX = state[0][0], minY = state[0][1], maxY = state[0][1];
+  
   state.forEach(element => {
     minX = element[0] < minX ? element[0] : minX;
     maxX = element[0] > maxX ? element[0] : maxX;
@@ -59,7 +59,7 @@ const printCells = (state) => {
     }
     rectangle += '\n';
   }
-  
+
   return rectangle;
 };
 
