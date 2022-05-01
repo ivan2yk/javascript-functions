@@ -30,13 +30,15 @@ const corners = (state = []) => {
     };
   }
 
-  let minX = state[0][0], maxX = state[0][0], minY = state[0][1], maxY = state[0][1];
-  
+  let minX, maxX, minY, maxY;
+
   state.forEach(element => {
-    minX = element[0] < minX ? element[0] : minX;
-    maxX = element[0] > maxX ? element[0] : maxX;
-    minY = element[1] < minY ? element[1] : minY;
-    maxY = element[1] > maxY ? element[1] : maxY;
+    if (element) {
+      minX = minX === undefined ? element[0] : element[0] < minX ? element[0] : minX;
+      maxX = maxX === undefined ? element[0] : element[0] > maxX ? element[0] : maxX;
+      minY = minY === undefined ? element[1] : element[1] < minY ? element[1] : minY;
+      maxY = maxY === undefined ? element[1] : element[1] > maxY ? element[1] : maxY;
+    }
   });
 
   return {
