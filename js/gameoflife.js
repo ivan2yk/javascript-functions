@@ -53,7 +53,7 @@ const printCells = (state) => {
   const limitX = cornersValue.topRight[0];
   const initY = cornersValue.bottomLeft[1];
   const limitY = cornersValue.topRight[1];
-  let rectangle;
+  let rectangle = '';
 
   for (let indexY = initY; indexY <= limitY; indexY++) {
     for (let indexX = initX; indexX <= limitX; indexX++) {
