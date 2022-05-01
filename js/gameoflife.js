@@ -48,11 +48,11 @@ const corners = (state = []) => {
 };
 
 const printCells = (state) => {
-  const corners = corners(state);
-  const initX = corners.bottomLeft[0];
-  const limitX = corners.topRight[0];
-  const initY = corners.bottomLeft[1];
-  const limitY = corners.topRight[1];
+  const cornersValue = corners(state);
+  const initX = cornersValue.bottomLeft[0];
+  const limitX = cornersValue.topRight[0];
+  const initY = cornersValue.bottomLeft[1];
+  const limitY = cornersValue.topRight[1];
   let rectangle;
 
   for (let indexY = initY; indexY <= limitY; indexY++) {
