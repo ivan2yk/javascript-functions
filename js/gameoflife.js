@@ -61,7 +61,6 @@ const printCells = (state) => {
     }
     rectangle += '\n';
   }
-
   return rectangle;
 };
 
