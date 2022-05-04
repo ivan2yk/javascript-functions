@@ -55,12 +55,13 @@ const printCells = (state) => {
   const limitY = cornersValue.topRight[1];
   let rectangle = '';
 
-  for (let indexY = initY; indexY <= limitY; indexY++) {
+  for (let indexY = limitY; indexY >= initY; indexY--) {
     for (let indexX = initX; indexX <= limitX; indexX++) {
       rectangle += printCell([indexX, indexY], state) + ' ';
     }
     rectangle += '\n';
   }
+
   return rectangle;
 };
 
@@ -123,7 +124,27 @@ const iterate = (state, iterations) => {
   return newGameStates;
 };
 
-const main = (pattern, iterations) => { };
+const main = (pattern, iterations) => {
+  let patternState;
+
+  for (const key in startPatterns) {
+    if (key === pattern) {
+      patternState = startPatterns[key];
+      break;
+    }
+  }
+
+  if (patternState) {
+    let futureStates = iterate(patternState, iterations);
+    let result = '';
+
+    futureStates.forEach(element => {
+      result += printCells(element);
+    });
+
+    console.log(result);
+  }
+};
 
 const startPatterns = {
   rpentomino: [
