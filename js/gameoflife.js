@@ -94,7 +94,7 @@ const calculateNext = (state) => {
   let limitY = currentCorners.topRight[1] + 1;
   let newGrid = [];
   let newGameState = [];
-  
+
   for (let indexY = initY; indexY <= limitY; indexY++) {
     for (let indexX = initX; indexX <= limitX; indexX++) {
       newGrid.push([indexX, indexY]);
@@ -110,7 +110,18 @@ const calculateNext = (state) => {
   return newGameState;
 };
 
-const iterate = (state, iterations) => { };
+const iterate = (state, iterations) => {
+  let newGameStates = [];
+  let previousState = state;
+  newGameStates.push(previousState);
+
+  for (let index = 0; index < iterations; index++) {
+    previousState = calculateNext(previousState);
+    newGameStates.push(previousState);
+  }
+
+  return newGameStates;
+};
 
 const main = (pattern, iterations) => { };
 
