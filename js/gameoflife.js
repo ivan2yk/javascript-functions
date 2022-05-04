@@ -86,7 +86,29 @@ const willBeAlive = (cell, state) => {
   return livingNeighbors.length === 3 || (contains.call(state, cell) && livingNeighbors.length === 2);
 };
 
-const calculateNext = (state) => { };
+const calculateNext = (state) => {
+  const currentCorners = corners(state);
+  let initX = currentCorners.bottomLeft[0] - 1;
+  let limitX = currentCorners.topRight[0] + 1;
+  let initY = currentCorners.bottomLeft[1] - 1;
+  let limitY = currentCorners.topRight[1] + 1;
+  let newGrid = [];
+  let newGameState = [];
+  
+  for (let indexY = initY; indexY <= limitY; indexY++) {
+    for (let indexX = initX; indexX <= limitX; indexX++) {
+      newGrid.push([indexX, indexY]);
+    }
+  }
+
+  newGrid.forEach(element => {
+    if (willBeAlive(element, state)) {
+      newGameState.push(element);
+    }
+  });
+
+  return newGameState;
+};
 
 const iterate = (state, iterations) => { };
 
