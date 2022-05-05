@@ -139,7 +139,7 @@ const main = (pattern, iterations) => {
     let result = '';
 
     futureStates.forEach(element => {
-      result += printCells(element);
+      result += printCells(element) + '\n';
     });
 
     console.log(result);
